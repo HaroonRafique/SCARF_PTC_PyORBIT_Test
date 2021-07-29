@@ -25,7 +25,7 @@ mem_limits = False      # Specify memory limits, default 4GB
 queue = 'ibis' # isis exclusive 10x SCARF16 nodes 20 cores/Node
 
 # ~ n_nodes = 4 
-n_tasks_tot = 80
+n_tasks_tot = 2
 
 space_charge_flag = int(os.getcwd().split('/')[-1][0])
 print 'simulation_parameters: space charge = ', space_charge_flag
@@ -139,7 +139,7 @@ if clean_all:f.write('\n./clean_all.sh')
 f.write('\n. setup_environment.sh >> ${simulation_info_file}')
 # ~ f.write('\n')
 # ~ f.write('\n# Load correct MPI')
-f.write('\nmodule load mpi/mpich-3.0-x86_64')
+#f.write('\nmodule load mpi/mpich-3.0-x86_64')
 # ~ f.write('\nmodule load mpi/mpich-x86_64')
 # ~ f.write('\nmodule load mpi/openmpi-x86_64')
 f.write('\n')
