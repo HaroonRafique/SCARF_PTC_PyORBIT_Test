@@ -116,10 +116,10 @@ else:
 # Write tunes.str file for MAD-X input
 #-----------------------------------------------------------------------
 if not rank:
-    script_name = 'PS_Lattice/tunes.str'
+    script_name = './PS_Lattice/tunes.str'
     if os.path.exists(script_name):  
-            print 'tune file ' + script_name + ' already exists. Deleting'
-            os.remove(script_name)
+        print 'tune file ' + script_name + ' already exists. Deleting'
+        os.remove(script_name)
 
     f= open(script_name,"w")
 
