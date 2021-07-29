@@ -14,7 +14,7 @@ script_name = "SLURM_submission_script.sh"
 hyperthreading = True   # Enable hyperthreading
 exclusive = True        # Exclusive nodes (see SLURM documentation)
 autotime = True         # 7 days True, 2 days False
-autotask = False         # Automatically set nodes to maximum tasks
+autotask = False        # Automatically set nodes to maximum tasks
 clean_all = True        # Clean simulation folder before running (False when resuming pickle checkpoint)
 constrain = False       # Force SCARF hardware
 mem_limits = False      # Specify memory limits, default 4GB
@@ -25,7 +25,7 @@ mem_limits = False      # Specify memory limits, default 4GB
 queue = 'ibis' # isis exclusive 10x SCARF16 nodes 20 cores/Node
 
 # ~ n_nodes = 4 
-n_tasks_tot = 2
+n_tasks_tot = 80
 
 space_charge_flag = int(os.getcwd().split('/')[-1][0])
 print 'simulation_parameters: space charge = ', space_charge_flag
@@ -146,8 +146,10 @@ f.write('\n')
 f.write('\ntstart=$(date +%s)')
 f.write('\n')
 f.write('\n# Run the job')
-if hyperthreading:f.write('\nsrun ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))	
-else:f.write('\nsrun --hint=nomultithread ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))
+if hyperthreading:f.write('\nmpirun -srun ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))	
+# ~ if hyperthreading:f.write('\nsrun ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))	
+else:f.write('\nmpirun -srun --hint=nomultithread ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))
+# ~ else:f.write('\nsrun --hint=nomultithread ${ORBIT_ROOT}/bin/pyORBIT ${RUN_DIR}/' + str(simulation_file))
 f.write('\n')
 f.write('\ntend=$(date +%s)')
 f.write('\ndt=$(($tend - $tstart))')

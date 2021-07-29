@@ -1,7 +1,6 @@
 # script to setup the PyOrbit environment 
 # execute like: . setup_environment.sh
-
-pyOrbit_dir=/apps/contrib/ptc-pyorbit/PTC-PyORBIT/PyOrbit_env/py-orbit
+pyOrbit_dir=/apps/contrib/ptc-pyorbit/PTC-PyORBIT/PyOrbit_CERN/py-orbit
 
 # HR 18.03.21
 # Note that the custom environment is python 2.7
