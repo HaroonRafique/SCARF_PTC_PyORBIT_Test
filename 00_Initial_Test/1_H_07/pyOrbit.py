@@ -47,7 +47,6 @@ from lib.output_dictionary import *
 from lib.save_bunch_as_matfile import *
 from lib.suppress_stdout import suppress_STDOUT
 from lib.pyOrbit_Bunch_Gather import *
-from lib.pyOrbit_Tunespread_Calculator import *
 from lib.pyOrbit_GenerateInitialDistribution import *
 from lib.pyOrbit_PrintLatticeFunctionsFromPTC import *
 from lib.pyOrbit_PTCLatticeFunctionsDictionary import *
@@ -117,20 +116,20 @@ else:
 # Write tunes.str file for MAD-X input
 #-----------------------------------------------------------------------
 if not rank:
-        script_name = 'PS_Lattice/tunes.str'
-        if os.path.exists(script_name):  
-                print 'tune file ' + script_name + ' already exists. Deleting'
-                os.remove(script_name)
+    script_name = 'PS_Lattice/tunes.str'
+    if os.path.exists(script_name):  
+            print 'tune file ' + script_name + ' already exists. Deleting'
+            os.remove(script_name)
 
-        f= open(script_name,"w")
+    f= open(script_name,"w")
 
-        f.write('/**********************************************************************************\n')
-        f.write('*                             Tunes for PTC-PyORBIT simulation\n')
-        f.write('***********************************************************************************/\n')
-        f.write('tune_x = 0.' + str(p['tunex'][-2:]) + ';\n')
-        f.write('tune_y = 0.' + str(p['tuney'][-2:]) + ';\n')
-        f.write('lattice_start = ' + str(p['transverse_plane_flag']) + ';')
-        f.close()
+    f.write('/**********************************************************************************\n')
+    f.write('*                             Tunes for PTC-PyORBIT simulation\n')
+    f.write('***********************************************************************************/\n')
+    f.write('tune_x = 0.' + str(p['tunex'][-2:]) + ';\n')
+    f.write('tune_y = 0.' + str(p['tuney'][-2:]) + ';\n')
+    f.write('lattice_start = ' + str(p['transverse_plane_flag']) + ';')
+    f.close()
 orbit_mpi.MPI_Barrier(comm)
 
 # Generate Lattice (MADX + PTC) - Use MPI to run on only one 'process'
