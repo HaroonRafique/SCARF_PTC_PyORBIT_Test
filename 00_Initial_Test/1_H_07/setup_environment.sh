@@ -11,6 +11,7 @@ source ${pyOrbit_dir}/customEnvironment.sh
 echo "customEnvironment done"
 source ${pyOrbit_dir}/../virtualenvs/py2.7/bin/activate
 echo "python packages charged"
+which python
 
 # The intel fortran licences are required for PTC. If you are running
 # PyORBIT locally you will likely have to VPN into the STFC network
