@@ -346,9 +346,8 @@ output.update()
 print "p['n_macroparticles'] = ", p['n_macroparticles']
 
 for i in range(0, p['n_macroparticles'],1):
-	print bunch.x(i)
-if not s['Gaussian']:
-    particleDictionary.Update(bunch, turn, verbose=True)
+	# ~ print bunch.x(i)
+# ~ if not s['Gaussian']:  particleDictionary.Update(bunch, turn, verbose=False)
 
 if os.path.exists(output_file):
 	output.import_from_matfile(output_file)
