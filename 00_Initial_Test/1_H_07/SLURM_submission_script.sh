@@ -2,14 +2,14 @@
 #SBATCH --job-name=1_H_07
 #SBATCH --output=slurm.%N.%j.out
 #SBATCH --error=slurm.%N.%j.err
+#SBATCH --constraint="intel"
 #SBATCH --ntasks=80
 #SBATCH --partition=ibis
 #SBATCH --time=168:00:00
-#SBATCH --constraint="intel"
 #SBATCH --exclusive
+export OMP_NUM_THREADS=1
 
 ml ifort/2018.3.222-GCC-7.3.0-2.30
-
 BATCH_ROOT_DIR=/home/vol05/scarf1015
 RUN_DIR=/work3/isis/scarf1015/SCARF_PTC_PyORBIT_Test/00_Initial_Test/1_H_07
 OrigIwd=$(pwd)
