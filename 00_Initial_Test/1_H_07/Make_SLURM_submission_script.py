@@ -28,9 +28,9 @@ queue = 'ibis' # isis exclusive 10x SCARF16 nodes 20 cores/Node
 n_tasks_tot = 80
 
 space_charge_flag = int(os.getcwd().split('/')[-1][0])
-print 'simulation_parameters: space charge = ', space_charge_flag
+print ('simulation_parameters: space charge = ', space_charge_flag)
 transverse_plane = os.getcwd().split('/')[-1][2]
-print 'simulation_parameters: transverse_plane = ', transverse_plane
+print ('simulation_parameters: transverse_plane = ', transverse_plane)
 scan_tune = os.getcwd().split('/')[-1][-2:]
 
 jobname = str(space_charge_flag) + '_' + str(transverse_plane) + '_' + str(scan_tune)
@@ -61,7 +61,7 @@ if autotask:
         elif 'ibis' in queue: 
                 n_tasks = 20
         else: 
-                print 'queue not recognised'
+                print ('queue not recognised')
                 exit(0)
 else: n_tasks = manual_tasks
 
@@ -90,10 +90,10 @@ else: mem_limit = manual_mem_limit
 #	WRITE FILE
 #-----------------------------------------------------------------------  
 if os.path.exists(script_name):  
-	print 'SLURM submission script ' + script_name + ' already exists. Deleting'
+	print ('SLURM submission script ' + script_name + ' already exists. Deleting')
 	os.remove(script_name)
 
-print "Creating ", script_name
+print ("Creating ", script_name)
 
 f= open(script_name,"w")
 
@@ -160,4 +160,4 @@ f.write('\necho "total simulation time (s): " $dt >> ${simulation_info_file}')
 
 f.close()
 
-print 'SLURM submission script creation finished'
+print ('SLURM submission script creation finished')
